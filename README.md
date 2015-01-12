@@ -7,7 +7,7 @@ html-code-gen
 [![Dependencies](http://img.shields.io/david/nighca/html-code-gen.svg?style=flat-square)](https://david-dm.org/nighca/html-code-gen)
 [![DevDependencies](http://img.shields.io/david/dev/nighca/html-code-gen.svg?style=flat-square)](https://david-dm.org/nighca/html-code-gen)
 
-html-code-gen is for ...
+html-code-gen is a HTML-code generator. It generates HTML code with given dom(-like) object.
 
 ### Install
 
