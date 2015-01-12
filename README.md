@@ -11,10 +11,12 @@ html-code-gen is for ...
 
 ### Install
 
-	npm i html-code-gen
+	npm install html-code-gen
 
 ### Usage
 
 	```javascript
-	var html-code-gen = require('html-code-gen');
+	var genner = require('html-code-gen');
+
+	var output = genner.print(dom, opt);
 	```
