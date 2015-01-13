@@ -7,6 +7,6 @@ var print = require('../../lib/print');
 
 var parse = require('htmlcs/lib/parse');
 
-var code = '<html><div id="div-1">DIV</div> space <p>ppp</p></html>';
+var code = '<html>\n\t<script src="xxx"></script>\n\t<input type="text" disabled>\n\t<div id="div-1">DIV<!--comment--></div>\n\t space \n\t<p>ppp</p>\n</html>';
 console.log(code);
 console.log(print(parse(code)));
