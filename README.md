@@ -15,8 +15,8 @@ html-code-gen is a HTML-code generator. It generates HTML code with given dom(-l
 
 ### Usage
 
-	```javascript
-	var genner = require('html-code-gen');
+```javascript
+var genner = require('html-code-gen');
 
-	var output = genner.print(dom, opt);
-	```
+var output = genner.print(dom, opt);
+```
