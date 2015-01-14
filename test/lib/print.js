@@ -7,6 +7,6 @@ var print = require('../../lib/print');
 
 var parse = require('htmlcs/lib/parse');
 
-var code = '<html>\n\t<script src="xxx"></script>\n\t<input type="text" disabled>\n\t<div id="div-1">DIV<!--comment--></div>\n\t space \n\t<p>ppp</p>\n</html>';
-console.log(code);
+var code = require('fs').readFileSync('test/fixture/test.html', 'utf-8');
+//console.log(code);
 console.log(print(parse(code)));
