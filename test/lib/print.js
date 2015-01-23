@@ -5,8 +5,10 @@
 
 var print = require('../../lib/print');
 
+var fs = require('fs');
 var parse = require('htmlcs/lib/parse');
 
-var code = '<html>\n\t<script src="xxx"></script>\n\t<input type="text" disabled>\n\t<div id="div-1">DIV<!--comment--></div>\n\t space \n\t<p>ppp</p>\n</html>';
-console.log(code);
-console.log(print(parse(code)));
+var code = fs.readFileSync('test/case/test.html', 'utf-8');
+var formatted = print(parse(code));
+
+fs.writeFileSync('test/case/test-formatted.html', formatted);
