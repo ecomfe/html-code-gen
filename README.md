@@ -31,11 +31,11 @@ var genner = require('html-code-gen'),
 
 * `max-char`: max char num in one line
 
-	default: `80`
+	default: `80` (TODO)
 
 * `no-format-tag`: tags whose content should not be formatted
 
-	default: `spec.tagTypeMap.inline`
+	default: [`spec.tagTypeMap.inline`](./lib/spec.js#L25)
 
 * `no-format`: no format
 
