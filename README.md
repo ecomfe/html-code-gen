@@ -21,44 +21,30 @@ var genner = require('html-code-gen'),
 ```
 ### Options
 
-* `indent-size`
-
-	size of indent
+* `indent-size`: size of indent
 
 	default: `4`
 
-* `indent-char`
-
-	char of indent ( space / tab )
+* `indent-char`: char of indent ( space / tab )
 
 	default: `'space'`
 
-* `max-char`
-
-	max char num in one line
+* `max-char`: max char num in one line
 
 	default: `80`
 
-* `no-format-tag`
-
-	tags whose content should not be formatted
+* `no-format-tag`: tags whose content should not be formatted
 
 	default: `spec.tagTypeMap.inline`
 
-* `no-format`
-
-	no format
+* `no-format`: no format
 
 	default: `false`
 
-* `formatter`
-
-	special formatters { tagName ( script / style ) : formater )
+* `formatter`: special formatters { tagName ( script / style ) : formater )
 
 	default: `{}`
 
-* `level`
-
-	current level
+* `level`: current level
 
 	default: `0`
