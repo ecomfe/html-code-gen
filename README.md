@@ -16,7 +16,49 @@ html-code-gen is a HTML-code generator. It generates HTML code with given dom(-l
 ### Usage
 
 ```javascript
-var genner = require('html-code-gen');
-
-var output = genner.print(dom, opt);
+var genner = require('html-code-gen'),
+	output = genner.print(dom, opt);
 ```
+### Options
+
+* `indent-size`
+
+	size of indent
+
+	default: `4`
+
+* `indent-char`
+
+	char of indent ( space / tab )
+
+	default: `'space'`
+
+* `max-char`
+
+	max char num in one line
+
+	default: `80`
+
+* `no-format-tag`
+
+	tags whose content should not be formatted
+
+	default: `spec.tagTypeMap.inline`
+
+* `no-format`
+
+	no format
+
+	default: `false`
+
+* `formatter`
+
+	special formatters { tagName ( script / style ) : formater )
+
+	default: `{}`
+
+* `level`
+
+	current level
+
+	default: `0`
