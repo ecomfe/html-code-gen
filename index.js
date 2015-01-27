@@ -3,7 +3,7 @@
  * nighca ( nighca@live.cn )
  */
 
-var print = reuqire('./lib/print');
+var print = require('./lib/print');
 
 module.exports = {
     print: print
