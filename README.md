@@ -11,7 +11,15 @@ html-code-gen is a HTML-code generator. It generates HTML code with given dom(-l
 
 ### Install
 
-	npm install html-code-gen
+* nodejs
+
+		npm install html-code-gen
+
+* browser
+
+	```html
+	<script src="html-code-gen/browser/html-code-gen.js"></script>
+	```
 
 ### Usage
 
@@ -29,9 +37,9 @@ var genner = require('html-code-gen'),
 
 	default: `'space'`
 
-* `max-char`: max char num in one line
+* `max-char`: max char num in one line (TODO)
 
-	default: `80` (TODO)
+	default: `80`
 
 * `no-format-tag`: tags whose content should not be formatted
 
