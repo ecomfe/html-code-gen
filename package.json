@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
+  "browserify": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "browserify": "^8.1.1",
     "coveralls": "^2.11.2",
     "htmlcs": "0.0.3",
     "istanbul": "^0.3.2",
     "jasmine-node": "^1.14.5"
   },
   "scripts": {
+    "browserify": "browserify -r ./index.js:html-code-gen > browser/html-code-gen.js",
     "test": "istanbul cover jasmine-node --captureExceptions test/**/*.spec.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
