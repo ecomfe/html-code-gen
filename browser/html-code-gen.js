@@ -17,19 +17,26 @@ var indent = function(opt){
     return util.indent(opt.level, opt['indent-char'], opt['indent-size']);
 };
 
-var printAttribute = function(attribute){
+var printAttribute = function(attribute, opt){
     // boolean attribute
     if(util.isIn(attribute.name, booleanAttributes)){
-        return attribute.name;
+        if(
+            opt['bool-attribute-value'] === 'remove' ||
+            !attribute.value
+        ){
+            return attribute.name;
+        }
     }
 
     return util.format('${name}="${value}"', attribute);
 };
 
-var printAttributes = function(attributes){
+var printAttributes = function(attributes, opt){
     if(!attributes) return '';
 
-    return array.map.call(attributes, printAttribute).join(' ');
+    return array.map.call(attributes, function(attribute){
+        return printAttribute(attribute, opt);
+    }).join(' ');
 };
 
 var printVoidElementNode = function(info, node, condition, opt){
@@ -88,7 +95,7 @@ var printElementNode = function(node, opt){
     var print = require('./print');
 
     var tag = node.tagName.toLowerCase(),
-        attributesStr = printAttributes(node.attributes);
+        attributesStr = printAttributes(node.attributes, opt);
 
     // conditions
     var condition = {
@@ -167,7 +174,26 @@ var printCDATASectionNode = function(node, opt){
 
 // DOCUMENT_TYPE_NODE
 var printDocumentTypeNode = function(node, opt){
-    return '<!DOCTYPE ' + node.name + '>';
+    if(!node.publicId && !node.systemId){
+        return '<!DOCTYPE ' + node.name + '>';
+    }
+
+    var output = '<!DOCTYPE ' + node.name;
+
+    if(node.publicId){
+        output += ' PUBLIC';
+        output += ' "' + node.publicId + '"';
+    }else{
+        output += ' SYSTEM';
+    }
+
+    if(node.systemId){
+        output += ' "' + node.systemId + '"';
+    }
+
+    output += '>';
+
+    return output;
 };
 
 // DOCUMENT_NODE
@@ -199,6 +225,8 @@ var print = function(node, opt){
         'no-format': false,
         // special formatters { tagName ( script / style ) : formatter }
         'formatter': {},
+        // hide value of boolean attribute or not ( 'remove' / 'preserve' )
+        'bool-attribute-value': 'remove',
         // current level
         'level': 0
     }, opt);
