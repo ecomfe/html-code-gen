@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>browser test</title>
-	<script src="../browser/html-code-gen.js"></script>
+	<script src="../browser/html-code-gen.min.js"></script>
 </head>
 <body>
 
@@ -30,7 +30,7 @@
 		n = document.implementation.createHTMLDocument('');
 		n.firstElementChild.innerHTML = code;
 
-		var formatted = require('html-code-gen').print(n, {
+		var formatted = window.htmlCodeGen.print(n, {
 			'no-format': false,
 			'formatter': {
 				script: function(code, node, opt, helper){
