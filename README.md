@@ -27,6 +27,7 @@ html-code-gen is a HTML-code generator. It generates HTML code with given dom(-l
 var genner = require('html-code-gen'),
 	output = genner.print(dom, opt);
 ```
+
 ### Options
 
 * `indent-size`: size of indent
@@ -52,6 +53,10 @@ var genner = require('html-code-gen'),
 * `formatter`: special formatters { tagName ( script / style ) : formater )
 
 	default: `{}`
+
+* `bool-attribute-value`: hide value of boolean attribute or not ( 'remove' / 'preserve' )
+
+	default: `'remove'`,
 
 * `level`: current level
 
