@@ -88,14 +88,18 @@ var printRawTextElementNode = function(info, node, condition, opt){
 
 var printNormalElementNode = function(info, node, condition, opt){
     var content = (
-        condition.noFormat ?
-        info.children :
+        condition.newLine ?
         info.children.filter(function(child){
             return child.trim()
         }).map(function(child){
             return info.innerIndent + child;
-        })
+        }) :
+        info.children
     ).join(info.sep);
+
+    if(node.tagName === 'PRE'){
+        console.log(info);
+    }
 
     return packageElement(info, content);
 };
@@ -113,9 +117,11 @@ var printElementNode = function(node, opt){
     var condition = {
         isVoid: util.isIn(tag, tagTypeMap['void']),
         isHtml: tag === 'html',
-        noFormat: opt['no-format'] || util.isIn(tag, opt['no-format-tag']) || !node.childNodes.length,
+        noFormat: opt['no-format'] || util.isIn(tag, opt['no-format-tag']),
+        inline: opt['inline'] || util.isIn(tag, opt['inline-tag']) || !node.childNodes.length,
         isRawText: util.isIn(tag, tagTypeMap['raw-text'])
     };
+    condition.newLine = !(condition.noFormat || condition.inline);
 
     // node info
     var info = {
@@ -130,6 +136,9 @@ var printElementNode = function(node, opt){
     // new opt for next-level (child) nodes
     var newOpt = util.extend({}, opt);
 
+    // no-format should be inheritted
+    if(condition.noFormat) newOpt['no-format'] = true;
+
     // increase level
     // do not indent 'head' & 'body' (under 'html')
     if(!condition.isHtml) newOpt.level++;
@@ -137,8 +146,8 @@ var printElementNode = function(node, opt){
     // tag start & end
     util.extend(info, {
         start: util.format('<${tag}${attributes}>', info),
-        end: (condition.noFormat ? '' : info.indent) + util.format('</${tag}>', info),
-        sep: condition.noFormat ? '' : '\n',
+        end: (condition.newLine ? info.indent : '') + util.format('</${tag}>', info),
+        sep: condition.newLine ? '\n' : '',
         // indent for child nodes
         innerIndent: indent(newOpt)
     });
@@ -171,7 +180,9 @@ var array = Array.prototype;
 
 // TEXT_NODE
 var printTextNode = function(node, opt){
-    return node.textContent.replace(/[\s\n\r]+/g, ' ');
+    return opt['no-format'] ?
+        node.textContent :
+        node.textContent.replace(/[\s\n\r]+/g, ' ');
 };
 
 // COMMENT_NODE
@@ -214,7 +225,7 @@ var printDocumentNode = function(node, opt){
         return print(childNode, opt);
     }).filter(function(content){
         return content.trim();
-    }).join(opt['no-format'] ? '' : '\n');
+    }).join('\n');
 };
 
 // ELEMENT_NODE
@@ -232,9 +243,13 @@ var print = function(node, opt){
         // max char num in one line
         'max-char': 80,
         // tags whose content should not be formatted
-        'no-format-tag': spec.tagTypeMap.inline,
+        'no-format-tag': spec.tagTypeMap.structural,
         // no format
         'no-format': false,
+        // tags whose content should be inline
+        'inline-tag': spec.tagTypeMap.inline,
+        // inline
+        'inline': false,
         // special formatters { tagName ( script / style ) : formatter }
         'formatter': {},
         // hide value of boolean attribute or not ( 'remove' / 'preserve' )
@@ -307,7 +322,8 @@ var tagTypeMap = {
     'void': ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'],
     'raw-text': ['script', 'style'],
     'escapable-raw-text': ['textarea', 'title'],
-    'inline': ['a', 'span', 'img', 'bdo', 'em', 'strong', 'dfn', 'code', 'samp', 'kbd', 'var', 'cite', 'abbr', 'acronym', 'q', 'sub', 'sup', 'tt', 'i', 'b', 'big', 'small', 'u', 's', 'strike', 'font', 'ins', 'del', 'pre', 'address', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+    'inline': ['a', 'span', 'img', 'bdo', 'em', 'strong', 'dfn', 'code', 'samp', 'kbd', 'var', 'cite', 'abbr', 'acronym', 'q', 'sub', 'sup', 'tt', 'i', 'b', 'big', 'small', 'u', 's', 'strike', 'font', 'ins', 'del', 'pre', 'address', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    'structural': ['pre', 'textarea', 'code']
 };
 
 var booleanAttributes = [
