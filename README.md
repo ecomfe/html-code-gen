@@ -60,11 +60,15 @@ var output = htmlCodeGen.print(dom, opt);
 
 * `no-format-tag`: tags whose content should not be formatted
 
-	default: [`spec.tagTypeMap.inline`](./lib/spec.js#L25)
+	default: [`spec.tagTypeMap.structural`](./lib/spec.js#L26)
 
 * `no-format`: no format
 
 	default: `false`
+
+* `inline-tag`: tags whose content should be inline
+
+	default: [`spec.tagTypeMap.inline`](./lib/spec.js#L25)
 
 * `formatter`: special formatters { tagName ( script / style ) : formater )
 
