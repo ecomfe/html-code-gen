@@ -1,11 +1,12 @@
 html-code-gen
 ========
 
-[![Build Status](https://travis-ci.org/nighca/html-code-gen.svg)](http://travis-ci.org/nighca/html-code-gen)
-[![NPM version](https://badge.fury.io/js/html-code-gen.svg)](http://badge.fury.io/js/html-code-gen)
-[![Coverage Status](https://coveralls.io/repos/nighca/html-code-gen/badge.svg?branch=master)](https://coveralls.io/r/nighca/html-code-gen?branch=master)
-[![Dependencies](http://img.shields.io/david/nighca/html-code-gen.svg?style=flat-square)](https://david-dm.org/nighca/html-code-gen)
-[![DevDependencies](http://img.shields.io/david/dev/nighca/html-code-gen.svg?style=flat-square)](https://david-dm.org/nighca/html-code-gen)
+[![Build Status](https://img.shields.io/travis/ecomfe/html-code-gen.svg?style=flat)](http://travis-ci.org/ecomfe/html-code-gen)
+[![NPM version](https://img.shields.io/npm/v/html-code-gen.svg?style=flat)](https://www.npmjs.com/package/html-code-gen)
+[![Coverage Status](https://img.shields.io/coveralls/ecomfe/html-code-gen.svg?style=flat)](https://coveralls.io/r/ecomfe/html-code-gen)
+[![Dependencies](https://img.shields.io/david/ecomfe/html-code-gen.svg?style=flat)](https://david-dm.org/ecomfe/html-code-gen)
+[![DevDependencies](https://img.shields.io/david/dev/ecomfe/html-code-gen.svg?style=flat)](https://david-dm.org/ecomfe/html-code-gen)
+
 
 html-code-gen is a HTML-code generator. It generates HTML code with given dom(-like) object.
 

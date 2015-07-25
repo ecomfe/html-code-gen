@@ -1,6 +1,6 @@
 {
   "name": "html-code-gen",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "",
   "main": "index.js",
   "browserify": "index.js",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nighca/html-code-gen.git"
+    "url": "https://github.com/ecomfe/html-code-gen.git"
   },
   "keywords": [],
   "author": {
@@ -32,7 +32,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nighca/html-code-gen/issues"
+    "url": "https://github.com/ecomfe/html-code-gen/issues"
   },
-  "homepage": "https://github.com/nighca/html-code-gen"
+  "homepage": "https://github.com/ecomfe/html-code-gen"
 }
