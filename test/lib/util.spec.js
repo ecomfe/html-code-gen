@@ -3,9 +3,7 @@
  * @author nighca<nighca@live.cn>
  */
 
-var path = require('path');
 var util = require('../../lib/util');
-var packageInfo = require('../../package.json');
 
 describe('extend', function () {
     var extend = util.extend;
@@ -59,10 +57,10 @@ describe('repeat', function () {
     var repeat = util.repeat;
 
     describe('repeat string', function () {
-        var result1 = repeat('', 2),
-            result2 = repeat('abc', 0),
-            result3 = repeat('abc', 1),
-            result4 = repeat('abc', 2);
+        var result1 = repeat('', 2);
+        var result2 = repeat('abc', 0);
+        var result3 = repeat('abc', 1);
+        var result4 = repeat('abc', 2);
 
         it('should return right result', function () {
             expect(result1).toBe('');
@@ -77,13 +75,13 @@ describe('indent', function () {
     var indent = util.indent;
 
     describe('output indent', function () {
-        var result1 = indent(-1, 'space', 2),
-            result2 = indent(0, 'space', 2),
-            result3 = indent(1, 'space', 2),
-            result4 = indent(2, 'space', 2),
-            result5 = indent(2, 'space', 4),
-            result6 = indent(1, 'tab'),
-            result7 = indent(2, 'tab');
+        var result1 = indent(-1, 'space', 2);
+        var result2 = indent(0, 'space', 2);
+        var result3 = indent(1, 'space', 2);
+        var result4 = indent(2, 'space', 2);
+        var result5 = indent(2, 'space', 4);
+        var result6 = indent(1, 'tab');
+        var result7 = indent(2, 'tab');
 
         it('should return right result', function () {
             expect(result1).toBe('');
@@ -101,14 +99,14 @@ describe('isIn', function () {
     var isIn = util.isIn;
 
     describe('judge if in an array', function () {
-        var result1 = isIn(1, []),
-            result2 = isIn(1, [1]),
-            result3 = isIn(1, [1, 2]),
-            result4 = isIn(2, [1, 2]),
-            result5 = isIn(3, [1, 2]),
-            result6 = isIn(undefined, [1, 2, undefined]),
-            result7 = isIn(null, [1, 2, null]),
-            result8 = isIn(null, [1, 2]);
+        var result1 = isIn(1, []);
+        var result2 = isIn(1, [1]);
+        var result3 = isIn(1, [1, 2]);
+        var result4 = isIn(2, [1, 2]);
+        var result5 = isIn(3, [1, 2]);
+        var result6 = isIn(undefined, [1, 2, undefined]);
+        var result7 = isIn(null, [1, 2, null]);
+        var result8 = isIn(null, [1, 2]);
 
         it('should return right result', function () {
             expect(result1).toBe(false);

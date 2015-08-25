@@ -1,6 +1,6 @@
-/*
- * gen code with given dom(-like) object
- * nighca ( nighca@live.cn )
+/**
+ * @file gen code with given dom(-like) object
+ * @author nighca<nighca@live.cn>
  */
 
 var print = require('./lib/print');
