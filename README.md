@@ -77,7 +77,11 @@ var output = htmlCodeGen.print(dom, opt);
 
 * `bool-attribute-value`: hide value of boolean attribute or not ( 'remove' / 'preserve' )
 
-	default: `'remove'`,
+	default: `'remove'`
+
+* `self-close`: should void tags close themeselves with "/" ( 'close' / 'no-close' )
+
+	default: `'no-close'`
 
 * `level`: current level
 
