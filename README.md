@@ -42,6 +42,10 @@ html-code-gen is a HTML-code generator. It generates HTML code with given dom(-l
 ### Usage
 
 ```javascript
+htmlCodeGen.print(dom, opt);
+```
+
+```javascript
 htmlCodeGen.printAsync(dom, opt).then(
 	output => console.log(output)
 );
