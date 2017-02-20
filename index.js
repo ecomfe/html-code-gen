@@ -3,8 +3,4 @@
  * @author nighca<nighca@live.cn>
  */
 
-var print = require('./lib/print');
-
-module.exports = {
-    print: print
-};
+module.exports = require('./lib/print');
